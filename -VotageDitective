@@ -1,0 +1,29 @@
+#include<LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27,16,2); 
+
+float Vin;
+float Vinshow;
+
+void setup() {
+  Serial.begin(9600);
+
+  lcd.init();
+  lcd.backlight();
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print("Votage");
+//////////////////LINE1/////////////////////////
+}
+
+void loop() {
+  Vin = analogRead(A1);
+  Vinshow = (Vin*5)/1024;
+  ///////////////////caculate////////////////
+  Serial.print("Input = ");
+  Serial.print(Vin);
+  Serial.println(" V");  
+  lcd.setCursor(0,1);    
+  delay(500);
+
+}
